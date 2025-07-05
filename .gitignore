@@ -7,6 +7,7 @@ __pycache__/
 *.log
 *.xml
 *.html
+playwright-log.txt
 
 # Ignore node modules (used by robotframework-browser)
 **/node_modules/
