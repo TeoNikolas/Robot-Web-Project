@@ -2,14 +2,17 @@
 Library    Browser
 
 *** Variables ***
-${URL}    https://www.saucedemo.com/
-
+${URL}       https://www.saucedemo.com/
 
 *** Keywords ***
 Login
-    New Browser    chromium    headless=False
-    New Context    viewport={'width':1280, 'height':800}
-    New Page       ${URL}
-    Fill Text      xpath=//input[@id="user-name"]     standard_user
-    Fill Text      xpath=//input[@id="password"]      secret_sauce
+    ${browser}=    New Browser    chromium    headless=False
+    ${context}=    New Context    viewport={'width':1200, 'height':700}
+    ${page}=       New Page       ${URL}
+    Set Suite Variable    ${page}
+
+Authenticate user
+    [Arguments]    ${USERNAME}    ${PASSWORD}
+    Type Text      xpath=//input[@id="user-name"]    ${USERNAME}
+    Type Secret    xpath=//input[@id="password"]    $PASSWORD
     Click          id=login-button
