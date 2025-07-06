@@ -1,4 +1,6 @@
 *** Settings ***
+Documentation    This test suite validates that a user can add an item
+...    to the basket and remove it before checkout on saucedemo.com.
 Resource    Resource.robot
 Library     Collections
 Library     Browser
@@ -10,6 +12,8 @@ ${PASSWORD}    secret_sauce
 
 *** Test Cases ***
 Add and remove item to the basket
+    [Documentation]    Logs in as a standard user, adds an item to the shopping cart,
+    ...    views the cart, and removes the item before proceeding to checkout.
     Open Web Page
     Authenticate user    ${USERNAME}    ${PASSWORD}
     Sleep    3
